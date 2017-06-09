@@ -1,0 +1,41 @@
+$ python 2_1_backward_selection.py
+Loading data ...
+Data loaded!
+Bacwkward feature selection started ...
+Eliminating 1 feature(s)!
+Results:
+N_remaining_features: 14, last eliminated feature: 10, current shape: (100000L, 14L), current error: 0.185270503754
+Eliminating 2 feature(s)!
+Results:
+N_remaining_features: 13, last eliminated feature: 14, current shape: (100000L, 13L), current error: 0.183237252359
+Eliminating 3 feature(s)!
+Results:
+N_remaining_features: 12, last eliminated feature: 5, current shape: (100000L, 12L), current error: 0.181422509323
+Eliminating 4 feature(s)!
+Results:
+N_remaining_features: 11, last eliminated feature: 6, current shape: (100000L, 11L), current error: 0.18160176495
+Eliminating 5 feature(s)!
+Results:
+N_remaining_features: 10, last eliminated feature: 13, current shape: (100000L, 10L), current error: 0.182523942229
+Eliminating 6 feature(s)!
+Results:
+N_remaining_features: 9, last eliminated feature: 3, current shape: (100000L, 9L), current error: 0.183108558975
+Eliminating 7 feature(s)!
+Results:
+N_remaining_features: 8, last eliminated feature: 12, current shape: (100000L, 8L), current error: 0.18387358371
+Eliminating 8 feature(s)!
+Results:
+N_remaining_features: 7, last eliminated feature: 4, current shape: (100000L, 7L), current error: 0.184408670147
+Eliminating 9 feature(s)!
+Results:
+N_remaining_features: 6, last eliminated feature: 11, current shape: (100000L, 6L), current error: 0.186237464775
+Eliminating 10 feature(s)!
+Results:
+N_remaining_features: 5, last eliminated feature: 7, current shape: (100000L, 5L), current error: 0.188902848087
+Eliminated features: 10, 14, 5, 6, 13, 3, 12, 4, 11, 7
+Features left to build the model: 0, 1, 2, 8, 9
+Backward feature selection completed!
+Testing phase started ...
+Testing phase completed!
+Testing mean squared error: 0.258094221037
+Runtime of testing phase: 55.0920000076
