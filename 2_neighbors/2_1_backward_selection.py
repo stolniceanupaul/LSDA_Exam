@@ -69,12 +69,12 @@ print("Backward feature selection completed!")
 
 # Plotting the mean squared error for selecting 5 features based on validation
 
-plt.plot(np.arange(15, 5, -1), errors)
-plt.xlim(16, 4)
+plt.plot(np.arange(14, 4, -1), errors)
+plt.xlim(15, 3)
 plt.xlabel('Number of used features in model building')
 plt.ylabel('Mean squared error')
 plt.title('Mean squared error on validation dataset for different number of features')
-plt.xticks(np.arange(15, 5, -1))
+plt.xticks(np.arange(14, 4, -1))
 plt.show()
 
 # Build the model based on the 5 features
