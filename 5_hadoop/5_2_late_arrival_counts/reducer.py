@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 import sys
 
+"""
+Disclaimer:
+This implementation makes use of code produced for
+the homework assignment 5.
+"""
+
 total_flights = 0
 delayed_flights = 0.0
 old_airline = None
@@ -14,7 +20,7 @@ for line in sys.stdin:
     if len(line) != 2:
         continue
 
-    # Get airline_id and the distance
+    # Get airline_id and the arrival_delay
     airline_id, arrival_delay = line
 
     try:
@@ -22,11 +28,10 @@ for line in sys.stdin:
     except ValueError:
         continue
 
-    # This if-statement only works because Hadoop sorts
-    # the output of the mapping phase by key (here, by
-    # airline_id) before it is passed to the reducers. Each
-    # reducer gets all the values for a given key. Each
-    # reducer might get the values for MULTIPLE keys.
+    # This usses the assumption that the pairs (key, value)
+    # are sorted after the mapping phase and therefore
+    # the input for the reducer is sorted by key.
+
     if (old_airline is not None) and (old_airline != airline_id):
         print('%s\t%s\t%s\t%s' % (old_airline, total_flights, delayed_flights, delayed_flights * 100 / total_flights))
         total_flights = 0
@@ -38,6 +43,6 @@ for line in sys.stdin:
     total_flights += 1
     old_airline = airline_id
 
-# We have to output the shortest distance for the last airline_id!
+# Stream the output for the last airline_id
 if old_airline is not None:
     print('%s\t%s\t%s\t%s' % (old_airline, total_flights, delayed_flights, delayed_flights * 100 / total_flights))

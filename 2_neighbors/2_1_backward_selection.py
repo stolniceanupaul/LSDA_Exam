@@ -1,13 +1,15 @@
-"""
-Disclaimer:
-This implementation of backward selection makes use of code produced for
-the homework assignment number 5. 
-"""
 import numpy as np
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.metrics import mean_squared_error
 import time
 import matplotlib.pyplot as plt
+
+"""
+Disclaimer:
+This implementation of backward selection makes use of code produced for
+the homework assignment 5.
+"""
+
 
 def get_mse(Xtrain, ytrain, Xtrue, ytrue):
     """

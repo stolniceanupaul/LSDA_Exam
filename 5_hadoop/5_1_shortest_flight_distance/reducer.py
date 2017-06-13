@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 import sys
 
+"""
+Disclaimer:
+This implementation makes use of code produced for
+the homework assignment 5.
+"""
+
 min_dist = None
 old_airline = None
 
@@ -21,11 +27,10 @@ for line in sys.stdin:
     except ValueError:
         continue
 
-    # This if-statement only works because Hadoop sorts
-    # the output of the mapping phase by key (here, by
-    # airline_id) before it is passed to the reducers. Each
-    # reducer gets all the values for a given key. Each
-    # reducer might get the values for MULTIPLE keys.
+    # This usses the assumption that the pairs (key, value)
+    # are sorted after the mapping phase and therefore
+    # the input for the reducer is sorted by key.
+
     if (old_airline is not None) and (old_airline != airline_id):
         print('%s\t%s' % (old_airline, min_dist))
         min_dist = None
@@ -35,6 +40,6 @@ for line in sys.stdin:
 
     old_airline = airline_id
 
-# We have to output the shortest distance for the last airline_id!
+# Stream the output for the last airline_id
 if old_airline is not None:
     print('%s\t%s' % (old_airline, min_dist))

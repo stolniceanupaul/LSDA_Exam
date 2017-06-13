@@ -2,7 +2,6 @@ import csv
 import numpy as np
 import time
 
-np.set_printoptions(threshold=np.inf)
 
 print("Loading and splitting data...")
 # Read data with from data/docword.enrom.txt

@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 import sys
 
+"""
+Disclaimer:
+This implementation makes use of code produced for
+the homework assignment 5.
+"""
+
 number_of_flights = 0
 sum_of_delays = 0
 squared_sum_of_delays = 0
@@ -15,7 +21,7 @@ for line in sys.stdin:
     if len(line) != 2:
         continue
 
-    # Get airline_id and the distance
+    # Get airline_id and the arrival delay
     airline_id, arrival_delay = line
 
     try:
@@ -23,12 +29,19 @@ for line in sys.stdin:
     except ValueError:
         continue
 
-    # This if-statement only works because Hadoop sorts
-    # the output of the mapping phase by key (here, by
-    # airline_id) before it is passed to the reducers. Each
-    # reducer gets all the values for a given key. Each
-    # reducer might get the values for MULTIPLE keys.
+    # This usses the assumption that the pairs (key, value)
+    # are sorted after the mapping phase (per document) and therefore
+    # the input for the combiner is sorted by key as well.
+
     if (old_airline_id is not None) and (old_airline_id != airline_id):
+
+        # For each airline_id this streams:
+        # - airline_id
+        # - number_of_flights
+        # - sum_of_delays
+        # - squared_sum_of_delays
+        # These will be used in the reducer to compute the mean and the std.
+
         print('%s\t%s\t%s\t%s' % (old_airline_id, number_of_flights, sum_of_delays, squared_sum_of_delays))
         number_of_flights = 0
         sum_of_delays = 0.0
@@ -39,6 +52,6 @@ for line in sys.stdin:
     squared_sum_of_delays += pow(arrival_delay, 2)
     old_airline_id = airline_id
 
-# We have to output the shortest distance for the last airline_id!
+# Stream the output for the last airline_id
 if old_airline_id is not None:
     print('%s\t%s\t%s\t%s' % (old_airline_id, number_of_flights, sum_of_delays, squared_sum_of_delays))
