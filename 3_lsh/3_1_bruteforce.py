@@ -8,12 +8,14 @@ print("Loading and splitting data...")
 # Read data with from data/docword.enrom.txt
 start_time = time.time()
 
-# First read only the number of documents, words and lines
+# We split the data into query and points and store them in two dictionaries
 query = {}
 points = {}
+
 with open('data/docword.enron.txt') as f:
     reader = csv.reader(f, delimiter=' ')
     line_number = 0
+    # Keep a set of all the word_ids that are used in the query points
     word_ids = set()
     for row in reader:
         line_number += 1
@@ -31,6 +33,7 @@ with open('data/docword.enron.txt') as f:
         else:
             doc_Id = int(row[0])
             word_Id = int(row[1])
+            # 100 is the splitting point between query and points
             if doc_Id <= 100:
                 word_ids.add(word_Id)
                 try:

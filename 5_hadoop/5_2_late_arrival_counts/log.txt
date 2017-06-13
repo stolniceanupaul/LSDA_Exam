@@ -1,0 +1,104 @@
+lsda@lsdabox:~$ hadoop jar /srv/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.7.3.jar -mapper $path/5_2_late_arrival_counts/mapper.py -reducer $path/5_2_late_arrival_counts/reducer.py -file $path/5_2_late_arrival_counts/mapper.py -file $path/5_2_late_arrival_counts/reducer.py -input airline_data/*.csv -output output
+17/06/13 15:10:16 WARN streaming.StreamJob: -file option is deprecated, please use generic option -files instead.
+packageJobJar: [../../media/sf_LSDA_Exam/5_hadoop/5_2_late_arrival_counts/mapper.py, ../../media/sf_LSDA_Exam/5_hadoop/5_2_late_arrival_counts/reducer.py, /tmp/hadoop-unjar8038420264082959674/] [] /tmp/streamjob329387654023007033.jar tmpDir=null
+17/06/13 15:10:19 INFO client.RMProxy: Connecting to ResourceManager at localhost/127.0.0.1:8050
+17/06/13 15:10:19 INFO client.RMProxy: Connecting to ResourceManager at localhost/127.0.0.1:8050
+17/06/13 15:10:21 INFO mapred.FileInputFormat: Total input paths to process : 6
+17/06/13 15:10:22 INFO mapreduce.JobSubmitter: number of splits:6
+17/06/13 15:10:22 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1497355758517_0003
+17/06/13 15:10:23 INFO impl.YarnClientImpl: Submitted application application_1497355758517_0003
+17/06/13 15:10:23 INFO mapreduce.Job: The url to track the job: http://lsdabox:8088/proxy/application_1497355758517_0003/
+17/06/13 15:10:23 INFO mapreduce.Job: Running job: job_1497355758517_0003
+17/06/13 15:10:32 INFO mapreduce.Job: Job job_1497355758517_0003 running in uber mode : false
+17/06/13 15:10:32 INFO mapreduce.Job:  map 0% reduce 0%
+17/06/13 15:11:58 INFO mapreduce.Job:  map 9% reduce 0%
+17/06/13 15:11:59 INFO mapreduce.Job:  map 12% reduce 0%
+17/06/13 15:12:04 INFO mapreduce.Job:  map 19% reduce 0%
+17/06/13 15:12:05 INFO mapreduce.Job:  map 27% reduce 0%
+17/06/13 15:12:06 INFO mapreduce.Job:  map 29% reduce 0%
+17/06/13 15:12:09 INFO mapreduce.Job:  map 36% reduce 0%
+17/06/13 15:12:11 INFO mapreduce.Job:  map 43% reduce 0%
+17/06/13 15:12:12 INFO mapreduce.Job:  map 48% reduce 0%
+17/06/13 15:12:13 INFO mapreduce.Job:  map 49% reduce 0%
+17/06/13 15:12:14 INFO mapreduce.Job:  map 56% reduce 0%
+17/06/13 15:12:15 INFO mapreduce.Job:  map 61% reduce 0%
+17/06/13 15:12:16 INFO mapreduce.Job:  map 66% reduce 0%
+17/06/13 15:12:18 INFO mapreduce.Job:  map 76% reduce 0%
+17/06/13 15:12:19 INFO mapreduce.Job:  map 87% reduce 0%
+17/06/13 15:12:20 INFO mapreduce.Job:  map 94% reduce 0%
+17/06/13 15:12:24 INFO mapreduce.Job:  map 100% reduce 0%
+17/06/13 15:12:40 INFO mapreduce.Job:  map 100% reduce 87%
+17/06/13 15:12:43 INFO mapreduce.Job:  map 100% reduce 100%
+17/06/13 15:12:45 INFO mapreduce.Job: Job job_1497355758517_0003 completed successfully
+17/06/13 15:12:46 INFO mapreduce.Job: Counters: 49
+	File System Counters
+		FILE: Number of bytes read=39470185
+		FILE: Number of bytes written=79793137
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=211806539
+		HDFS: Number of bytes written=416
+		HDFS: Number of read operations=21
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+	Job Counters 
+		Launched map tasks=6
+		Launched reduce tasks=1
+		Data-local map tasks=6
+		Total time spent by all maps in occupied slots (ms)=642238
+		Total time spent by all reduces in occupied slots (ms)=17229
+		Total time spent by all map tasks (ms)=642238
+		Total time spent by all reduce tasks (ms)=17229
+		Total vcore-milliseconds taken by all map tasks=642238
+		Total vcore-milliseconds taken by all reduce tasks=17229
+		Total megabyte-milliseconds taken by all map tasks=657651712
+		Total megabyte-milliseconds taken by all reduce tasks=17642496
+	Map-Reduce Framework
+		Map input records=2777469
+		Map output records=2777463
+		Map output bytes=33915253
+		Map output materialized bytes=39470215
+		Input split bytes=642
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=12
+		Reduce shuffle bytes=39470215
+		Reduce input records=2777463
+		Reduce output records=12
+		Spilled Records=5554926
+		Shuffled Maps =6
+		Failed Shuffles=0
+		Merged Map outputs=6
+		GC time elapsed (ms)=36898
+		CPU time spent (ms)=63490
+		Physical memory (bytes) snapshot=1552744448
+		Virtual memory (bytes) snapshot=13345951744
+		Total committed heap usage (bytes)=1308622848
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=211805897
+	File Output Format Counters 
+		Bytes Written=416
+17/06/13 15:12:46 INFO streaming.StreamJob: Output directory: output
+
+lsda@lsdabox:~$ hadoop fs -cat output/part-00000
+19393	643370	234624.0 	36.4679733279
+19690	37887	12158.0		32.0901628527
+19790	454372	117601.0	25.8820966081
+19805	459324	165059.0	35.935200425
+19930	88162	26422.0		29.9698282707
+19977	258574	69094.0		26.7211707287
+20304	299512	97456.0		32.5382622399
+20366	251522	77122.0		30.6621289589
+20409	139891	55437.0		39.6287109249
+20416	67525	31417.0		46.5264716772
+20436	43954	12978.0		29.526322974
+21171	33370	14084.0		42.2055738687
+
